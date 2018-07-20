@@ -5,14 +5,16 @@ const _ = require('lodash');
 const fs = require('fs-extra');
 const sortJson = require('sort-json');
 const { transform } = require('./helpers');
+const { LOCALES } = require('./const');
 
 const LOCALES_DIR = '../../tolstoy/app/locales';
-
-const LOCALES = ['en', 'ru'];
 
 const LOCALES_PATH = {
     en: path.join(__dirname, LOCALES_DIR, 'en.json'),
     ru: path.join(__dirname, LOCALES_DIR, 'ru-RU.json'),
+    ro: path.join(__dirname, LOCALES_DIR, 'ro-RO.json'),
+    sr: path.join(__dirname, LOCALES_DIR, 'sr.json'),
+    ua: path.join(__dirname, LOCALES_DIR, 'ua.json'),
 };
 
 const app = express();

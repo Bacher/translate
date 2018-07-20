@@ -39,6 +39,8 @@ const Label = styled.label`
     margin-right: 10px;
 `;
 
+const LOCALES = ['en', 'ru', 'ro', 'sr', 'ua'];
+
 let ren = 0;
 
 export default class App extends PureComponent {
@@ -74,22 +76,16 @@ export default class App extends PureComponent {
                         onChange={this._onFilterChange}
                     />
                     <Locales>
-                        <Label>
-                            <input
-                                type="checkbox"
-                                checked={activeLocales.includes('en')}
-                                onChange={() => this._onToggleLocale('en')}
-                            />{' '}
-                            En
-                        </Label>
-                        <Label>
-                            <input
-                                type="checkbox"
-                                checked={activeLocales.includes('ru')}
-                                onChange={() => this._onToggleLocale('ru')}
-                            />{' '}
-                            Ru
-                        </Label>
+                        {LOCALES.map(locale => (
+                            <Label key={locale}>
+                                <input
+                                    type="checkbox"
+                                    checked={activeLocales.includes(locale)}
+                                    onChange={() => this._onToggleLocale(locale)}
+                                />{' '}
+                                {locale}
+                            </Label>
+                        ))}
                     </Locales>
                     <Buttons>
                         <Button onClick={this._onSaveClick}>Сохранить</Button>

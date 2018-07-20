@@ -1,7 +1,9 @@
+const { LOCALES } = require('./const');
+
 function transform(locales) {
     const store = {};
 
-    for (let locale of ['en', 'ru']) {
+    for (let locale of LOCALES) {
         step(locales[locale], '', store, locale);
     }
 
