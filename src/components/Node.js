@@ -87,22 +87,27 @@ export default class Node extends PureComponent {
 
         return (
             <Root>
-                {parentPath ? (
-                    <Path>
+                <Path>
+                    {parentPath ? (
                         <PathLink href={`#${parentPath}`}>
                             {parentPath}
                         </PathLink>
-                        <Actions>
-                            <Button onClick={this._onAddNodeClick}>
-                                Добавить узел
-                            </Button>
-                            <Button onClick={this._onAddKeyClick}>
-                                Добавить ключ
-                            </Button>
-                        </Actions>
-                    </Path>
-                ) : null}
-                <NodeItems>{items}{subNodes}</NodeItems>
+                    ) : (
+                        '/'
+                    )}
+                    <Actions>
+                        <Button onClick={this._onAddNodeClick}>
+                            Добавить узел
+                        </Button>
+                        <Button onClick={this._onAddKeyClick}>
+                            Добавить ключ
+                        </Button>
+                    </Actions>
+                </Path>
+                <NodeItems>
+                    {items}
+                    {subNodes}
+                </NodeItems>
             </Root>
         );
     }
@@ -111,7 +116,7 @@ export default class Node extends PureComponent {
         const nodeName = (window.prompt('Node name:') || '').trim();
 
         if (nodeName) {
-            this.props.data.set(nodeName, new Map());
+            this.props.data[nodeName] = {};
             this.forceUpdate();
         }
     };
@@ -120,13 +125,15 @@ export default class Node extends PureComponent {
         const keyName = (window.prompt('Key name:') || '').trim();
 
         if (keyName) {
-            this.props.data.set(keyName, {});
+            this.props.data[keyName] = {
+                __type: 'leaf',
+            };
             this.forceUpdate();
         }
     };
 
     _onRemoveKey = key => {
-        this.props.data.delete(key);
+        delete this.props.data[key];
         this.forceUpdate();
     };
 }
