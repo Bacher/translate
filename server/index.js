@@ -64,6 +64,10 @@ app.post('/api/saveLocales', async (req, res) => {
     });
 });
 
+if (process.env.NODE_ENV !== 'development') {
+    app.use(express.static(path.join(__dirname, '../build')));
+}
+
 function step(data, locales, path) {
     for (let key in data) {
         const value = data[key];

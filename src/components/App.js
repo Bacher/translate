@@ -147,28 +147,9 @@ export default class App extends PureComponent {
     };
 
     _onSaveClick = async () => {
-        const res = await callApi('saveLocales', this.store);
+        await callApi('saveLocales', this.store);
     };
 }
-
-// function mapToObj(map) {
-//     const data = {};
-//
-//     stepMap(map, data);
-//
-//     return data;
-// }
-//
-// function stepMap(map, data) {
-//     for (let key of map) {
-//         if (value instanceof Map) {
-//             data[key] = {};
-//             stepMap(value, data[key]);
-//         } else {
-//             data[key] = value;
-//         }
-//     }
-// }
 
 async function callApi(apiName, data) {
     const res = await fetch(`//localhost:3001/api/${apiName}`, {

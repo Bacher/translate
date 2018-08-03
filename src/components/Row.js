@@ -60,7 +60,7 @@ export default class Node extends PureComponent {
     };
 
     render() {
-        const { depth, keyName, path, node, locales } = this.props;
+        const { depth, keyName, node, locales } = this.props;
 
         const { changes } = this.state;
 
