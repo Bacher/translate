@@ -108,12 +108,12 @@ export default class Node extends PureComponent {
                         </Button>
                         {parentPath ? (
                             <Button onClick={() => this._onRenameNodeClick(keyName)}>
-                                Переименовать узел
+                                Переименовать
                             </Button>
                         ) : null}
                         {parentPath ? (
                             <Button onClick={() => this._onRemoveNodeClick()}>
-                                Удалить узел
+                                Удалить
                             </Button>
                         ) : null}
                     </Actions>

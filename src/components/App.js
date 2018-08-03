@@ -152,12 +152,11 @@ export default class App extends PureComponent {
 }
 
 async function callApi(apiName, data) {
-    const res = await fetch(`//localhost:3001/api/${apiName}`, {
+    const res = await fetch(`/api/${apiName}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        mode: 'cors',
         body: data ? JSON.stringify(data) : null,
     });
 

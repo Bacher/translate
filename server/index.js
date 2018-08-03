@@ -56,7 +56,7 @@ app.post('/api/saveLocales', async (req, res) => {
 
     for (let locale of LOCALES) {
         const json = JSON.stringify(sortJson(locales[locale]), null, 2);
-        await fs.writeFile(LOCALES_PATH[locale], json);
+        await fs.writeFile(LOCALES_PATH[locale], json + '\n');
     }
 
     res.json({
@@ -92,7 +92,7 @@ function step(data, locales, path) {
 //     res.end('Invalid route');
 // });
 
-app.listen(3001, err => {
+app.listen(8877, err => {
     if (err) {
         console.error(err);
         process.exit(1);
@@ -100,7 +100,7 @@ app.listen(3001, err => {
     }
 
     if (process.env.NODE_ENV === 'production') {
-        console.log('Translate server listening at http://localhost:3001/');
+        console.log('Translate server listening at http://localhost:8877/');
     } else {
         console.log('Translate server is running.');
     }
