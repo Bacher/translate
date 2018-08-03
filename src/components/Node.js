@@ -61,11 +61,15 @@ export default class Node extends PureComponent {
                         key={key}
                         data={node}
                         depth={depth + 1}
-                        keyName={keyName}
+                        keyName={key}
                         parentPath={path}
                         filter={filter}
                         filterOk={_filterOk}
                         locales={locales}
+                        onRename={newKey =>
+                            this._onNodeRename(data, key, newKey)
+                        }
+                        onRemove={() => this._onNodeRemove(data, key)}
                     />,
                 );
             } else {
@@ -102,6 +106,16 @@ export default class Node extends PureComponent {
                         <Button onClick={this._onAddKeyClick}>
                             Добавить ключ
                         </Button>
+                        {parentPath ? (
+                            <Button onClick={() => this._onRenameNodeClick(keyName)}>
+                                Переименовать узел
+                            </Button>
+                        ) : null}
+                        {parentPath ? (
+                            <Button onClick={() => this._onRemoveNodeClick()}>
+                                Удалить узел
+                            </Button>
+                        ) : null}
                     </Actions>
                 </Path>
                 <NodeItems>
@@ -132,8 +146,31 @@ export default class Node extends PureComponent {
         }
     };
 
+    _onRenameNodeClick = key => {
+        const nodeName = (window.prompt('New node name:', key) || '').trim();
+
+        if (nodeName) {
+            this.props.onRename(nodeName);
+        }
+    };
+
+    _onRemoveNodeClick = () => {
+        this.props.onRemove();
+    };
+
     _onRemoveKey = key => {
         delete this.props.data[key];
         this.forceUpdate();
     };
+
+    _onNodeRename(data, key, newKey) {
+        data[newKey] = data[key];
+        delete data[key];
+        this.forceUpdate();
+    }
+
+    _onNodeRemove(data, key) {
+        delete data[key];
+        this.forceUpdate();
+    }
 }
