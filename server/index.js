@@ -92,4 +92,16 @@ function step(data, locales, path) {
 //     res.end('Invalid route');
 // });
 
-app.listen(3001, () => console.log('Example app listening on port 3001!'));
+app.listen(3001, err => {
+    if (err) {
+        console.error(err);
+        process.exit(1);
+        return;
+    }
+
+    if (process.env.NODE_ENV === 'production') {
+        console.log('Translate server listening at http://localhost:3001/');
+    } else {
+        console.log('Translate server is running.');
+    }
+});
