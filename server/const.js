@@ -1,4 +1,4 @@
-const LOCALES = ['en', 'ru', 'ro', 'sr', 'ua'];
+const LOCALES = ['en', 'ru', 'ua'];
 
 module.exports = {
     LOCALES,

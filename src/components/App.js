@@ -39,7 +39,7 @@ const Label = styled.label`
     margin-right: 10px;
 `;
 
-const LOCALES = ['en', 'ru', 'ro', 'sr', 'ua'];
+const LOCALES = ['en', 'ru', 'ua'];
 
 let ren = 0;
 

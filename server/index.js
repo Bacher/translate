@@ -12,8 +12,6 @@ const LOCALES_DIR = '../../tolstoy/app/locales';
 const LOCALES_PATH = {
     en: path.join(__dirname, LOCALES_DIR, 'en.json'),
     ru: path.join(__dirname, LOCALES_DIR, 'ru-RU.json'),
-    ro: path.join(__dirname, LOCALES_DIR, 'ro-RO.json'),
-    sr: path.join(__dirname, LOCALES_DIR, 'sr.json'),
     ua: path.join(__dirname, LOCALES_DIR, 'ua.json'),
 };
 
